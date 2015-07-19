@@ -1,0 +1,19 @@
+apply plugin: 'jetty'
+
+dependencies {
+    compile project(':core')
+    compile 'jstl:jstl:1.2'
+
+    testCompile 'junit:junit:4.10'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+jar {
+    baseName = 'user-management'
+    version =  '0.1.0'
+}

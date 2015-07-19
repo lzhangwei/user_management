@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'org.flywaydb.flyway'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.10'
+    compile 'mysql:mysql-connector-java:5.1.36'
+    compile 'com.kenai.nbpwr:org-apache-commons-dbcp:1.2.2-201002241055'
+}
+
+flyway {
+    url = 'jdbc:mysql://localhost:3306/user_management'
+    user = 'root'
+    password = ''
+    baselineOnMigrate = true
+}

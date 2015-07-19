@@ -1,0 +1,1 @@
+ALTER TABLE arrangement ADD date DATE NOT NULL;
