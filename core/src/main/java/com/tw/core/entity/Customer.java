@@ -21,7 +21,7 @@ public class Customer {
 
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinTable(
-            name="course_customer_relationship", //中间表的表名
+            name="course_customer_date", //中间表的表名
             joinColumns={@JoinColumn(name="customer_id")}, //设置自己方的主键名
             inverseJoinColumns={@JoinColumn(name="course_id")} //设置对方的主键名
     )

@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "arrangement")
-public class CourseArrangement {
+@Table(name = "course_customer_date")
+public class Arrangement {
 
     @Id
     @GeneratedValue
@@ -20,10 +20,14 @@ public class CourseArrangement {
     @JoinColumn(name="course_id")
     private Course course;
 
-    public CourseArrangement() {
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="customer_id")
+    private Customer customer;
+
+    public Arrangement() {
     }
 
-    public CourseArrangement(Date date, Course course) {
+    public Arrangement(Date date, Course course) {
         this.date = date;
         this.course = course;
     }
@@ -50,5 +54,13 @@ public class CourseArrangement {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
