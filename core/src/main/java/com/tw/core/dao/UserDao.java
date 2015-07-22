@@ -32,7 +32,7 @@ public class UserDao {
 
         Query query = session.createSQLQuery("select * from employee where role='coach' and id = " + userId).addEntity(Coach.class);
         List<Coach> coaches = query.list();
-//        session.close();
+        session.close();
         return coaches.get(0);
     }
 

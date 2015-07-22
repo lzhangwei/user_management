@@ -2,7 +2,6 @@ package com.tw.core.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "course_customer_date")
@@ -16,20 +15,21 @@ public class Arrangement {
     @Column(name = "date")
     private Date date;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="course_id")
     private Course course;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity =  Customer.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id")
     private Customer customer;
 
     public Arrangement() {
     }
 
-    public Arrangement(Date date, Course course) {
+    public Arrangement(Date date, Course course, Customer customer) {
         this.date = date;
         this.course = course;
+        this.customer = customer;
     }
 
     public int getId() {

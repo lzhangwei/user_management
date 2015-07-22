@@ -4,9 +4,6 @@ import org.apache.commons.dbcp.BasicDataSource;
 
 import java.sql.*;
 
-/**
- * Created by weizhang on 7/8/15.
- */
 public class DBHelper {
 
     private static BasicDataSource basicDataSource = null;

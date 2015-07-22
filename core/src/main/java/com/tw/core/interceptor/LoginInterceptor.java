@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by weizhang on 7/17/15.
- */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     @Override

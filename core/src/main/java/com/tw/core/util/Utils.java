@@ -5,12 +5,11 @@ import sun.misc.BASE64Encoder;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by weizhang on 7/14/15.
- */
 public class Utils {
 
     public static boolean isLogin(HttpServletRequest request) {
@@ -53,9 +52,20 @@ public class Utils {
         return password;
     }
 
-    public static String formateDate(Date date) {
+    public static String formatDate(Date date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(date);
+    }
+
+    public static Date parseStringToDate(String dateString) {
+        DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date date = null;
+        try {
+            date = format.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
 }

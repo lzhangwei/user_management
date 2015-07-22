@@ -17,6 +17,24 @@ public class Employee {
     @Column(name = "role")
     private String role;
 
+    public Employee() {
+    }
+
+    public Employee(int id) {
+        this.id = id;
+    }
+
+    public Employee(String name, String role) {
+        this.name = name;
+        this.role = role;
+    }
+
+    public Employee(int id, String name, String role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
+
     public int getId() {
         return id;
     }

@@ -22,6 +22,13 @@ public class Coach {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name="coach_id")
     private Set<Course> courses;
+
+    public Coach() {
+    }
+
+    public Coach(int id) {
+        this.id = id;
+    }
     public int getId() {
         return id;
     }

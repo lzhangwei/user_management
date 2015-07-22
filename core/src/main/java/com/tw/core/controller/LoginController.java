@@ -1,10 +1,6 @@
 package com.tw.core.controller;
 
-import com.tw.core.entity.Coach;
-import com.tw.core.entity.Course;
-import com.tw.core.entity.Employee;
-import com.tw.core.entity.User;
-import com.tw.core.service.CourseService;
+import com.tw.core.service.ArrangementService;
 import com.tw.core.service.UserService;
 import com.tw.core.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @RestController
 public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ArrangementService arrangementService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView index() {
@@ -52,13 +50,7 @@ public class LoginController {
             if (url != null) {
                 return new ModelAndView("redirect:/" + url);
             } else {
-                ModelAndView modelAndView = new ModelAndView();
-                Coach coach = userService.getCoachById(userId);
-                modelAndView.addObject("coach", coach);
-                modelAndView.addObject("courses", coach.getCourses());
-                modelAndView.addObject("customers", coach.getCustomers());
-                modelAndView.setViewName("add_course");
-                return modelAndView;
+                return new ModelAndView("redirect:/main");
             }
 
         } else {

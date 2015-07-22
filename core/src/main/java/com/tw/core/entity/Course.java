@@ -19,7 +19,13 @@ public class Course {
     @JoinColumn(name = "coach_id")
     private Coach coach;
 
-//    private Set<Customer> customers;
+    @ManyToMany(targetEntity = Customer.class,fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinTable(
+            name="course_customer_date", //中间表的表名
+            joinColumns={@JoinColumn(name="course_id")}, //设置自己方的主键名
+            inverseJoinColumns={@JoinColumn(name="customer_id")} //设置对方的主键名
+    )
+    private Set<Customer> customers;
 
     public int getId() {
         return id;
@@ -45,11 +51,11 @@ public class Course {
         this.coach = coach;
     }
 
-//    public Set<Customer> getCustomers() {
-//        return customers;
-//    }
-//
-//    public void setCustomers(Set<Customer> customers) {
-//        this.customers = customers;
-//    }
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
+    }
 }

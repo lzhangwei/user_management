@@ -25,5 +25,6 @@
     <input type="text" id="userId" value="${user.id}" name="id" hidden="hidden"/>
     <input type="submit" value="提交"/>
 </form>
+
 </body>
 </html>
